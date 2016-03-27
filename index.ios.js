@@ -7,9 +7,6 @@ import React, {
   AppRegistry,
   Component,
   StyleSheet,
-  Text,
-  View,
-  NavigatorIOS,
 } from 'react-native';
 
 var WeatherView = require('./src/WeatherView');
@@ -17,12 +14,7 @@ var WeatherView = require('./src/WeatherView');
 class ReactNativeWeather extends Component {
   render() {
     return (
-      <NavigatorIOS
-        style={styles.container}
-        initialRoute={{
-          title: 'Property Finder',
-          component: WeatherView,
-        }}/>
+      <WeatherView />
     );
   }
 }
