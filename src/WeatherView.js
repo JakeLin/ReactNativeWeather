@@ -13,9 +13,10 @@ class WeatherView extends Component {
     return (
       <Image style={styles.background} source={require('../img/background.png')}>
         <View style={styles.container}>
-          <Text style={styles.welcome}>
-            Welcome to React Native Weather haha!
-            </Text>
+          <Text style={[styles.city, styles.whiteText]}>
+            Melbourne
+          </Text>
+          <Text style={[styles.degrees, styles.whiteText]}>17°</Text>
         </View>
       </Image>
     );
@@ -31,8 +32,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#000000',
-    opacity: 0.4
+    opacity: 0.8
   },
+  whiteText: {
+    color: 'white'
+  },
+  city: {
+    fontSize: 40
+  },
+  degrees: {
+    fontSize: 60
+  }
 });
 
 module.exports = WeatherView;
