@@ -23,11 +23,8 @@ class WeatherView extends Component {
 }
 
 const styles = StyleSheet.create({
-  icon: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+  background: {
+    alignSelf: 'center'
   },
   container: {
     flex: 1,
