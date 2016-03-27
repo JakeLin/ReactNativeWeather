@@ -1,5 +1,7 @@
 'use strict'
 
+var icon = require('react-native-iconic-font/weathericons');
+
 import React, {
   Component,
   StyleSheet,
@@ -15,6 +17,9 @@ class WeatherView extends Component {
         <View style={styles.container}>
           <Text style={[styles.city, styles.whiteText]}>
             Melbourne
+          </Text>
+          <Text style={{fontFamily: 'weathericons',fontSize:30}}>
+            {icon('day-sunny')}
           </Text>
           <Text style={[styles.degrees, styles.whiteText]}>17°</Text>
         </View>
