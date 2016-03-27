@@ -3,13 +3,14 @@
  * https://github.com/facebook/react-native
  */
 'use strict';
+
 import React, {
   AppRegistry,
   Component,
   StyleSheet,
 } from 'react-native';
 
-var WeatherView = require('./src/WeatherView');
+import WeatherView from './src/WeatherView';
 
 class ReactNativeWeather extends Component {
   render() {

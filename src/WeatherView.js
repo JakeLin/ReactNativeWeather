@@ -1,6 +1,6 @@
 'use strict'
 
-let icon = require('react-native-iconic-font/weathericons');
+import Weathericons from 'react-native-iconic-font/weathericons';
 
 import React, {
   Component,
@@ -8,7 +8,7 @@ import React, {
   Text,
   View,
   Image
-} from 'react-native'
+} from 'react-native';
 
 class WeatherView extends Component {
   render() {
@@ -19,7 +19,7 @@ class WeatherView extends Component {
             Melbourne
           </Text>
           <Text style={[styles.icon, styles.whiteText]}>
-            {icon('day-sunny')}
+            {Weathericons('day-sunny')}
           </Text>
           <Text style={[styles.degrees, styles.whiteText]}>17°</Text>
         </View>
