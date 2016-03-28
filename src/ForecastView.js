@@ -13,8 +13,8 @@ class ForecastView extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={[styles.city, styles.whiteText]}>
-          Melbourne
+        <Text style={[styles.time, styles.whiteText]}>
+          12:30
         </Text>
         <Text style={[styles.icon, styles.whiteText]}>
           {Weathericons('day-sunny')}
@@ -34,15 +34,15 @@ const styles = StyleSheet.create({
   whiteText: {
     color: 'white'
   },
-  city: {
-    fontSize: 40
+  time: {
+    fontSize: 20
   },
   icon: {
     fontFamily: 'Weather Icons',
-    fontSize: 100
+    fontSize: 40
   },
   degrees: {
-    fontSize: 60
+    fontSize: 30
   }
 });
 

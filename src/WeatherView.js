@@ -1,7 +1,5 @@
 'use strict'
 
-import Weathericons from 'react-native-iconic-font/weathericons';
-
 import React, {
   Component,
   StyleSheet,
@@ -9,6 +7,10 @@ import React, {
   View,
   Image
 } from 'react-native';
+
+import Weathericons from 'react-native-iconic-font/weathericons';
+
+import ForecastView from './ForecastView';
 
 class WeatherView extends Component {
   render() {
@@ -22,6 +24,12 @@ class WeatherView extends Component {
             {Weathericons('day-sunny')}
           </Text>
           <Text style={[styles.degrees, styles.whiteText]}>17°</Text>
+          <View style={styles.forecastContainer}>
+            <ForecastView style={styles.forecast}/>
+            <ForecastView style={styles.forecast}/>
+            <ForecastView style={styles.forecast}/>
+            <ForecastView style={styles.forecast}/>
+          </View>
         </View>
       </Image>
     );
@@ -51,6 +59,14 @@ const styles = StyleSheet.create({
   },
   degrees: {
     fontSize: 60
+  },
+  forecastContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-around'
+  },
+  forecast: {
+    flex: 1
   }
 });
 
