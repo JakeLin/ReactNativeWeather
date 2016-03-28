@@ -46,4 +46,4 @@ const styles = StyleSheet.create({
   }
 });
 
-module.exports = ForecastView;
+export default ForecastView;
