@@ -38,12 +38,15 @@ class WeatherView extends Component {
       ( <ActivityIndicatorIOS
           hidden='true'
           size='large'/> ) :
-      ( <View/>);
-
+      ( <View/> );
+    let messageView = this.state.message ?
+      ( <View style={[styles.whiteText, styles.message]}>this.state.message</View> ) :
+      ( <View/> );
     return (
       <Image style={styles.backgroundImage} source={require('../img/background.png')}>
         <View style={styles.container}>
           {spinner}
+          {messageView}
           <Text style={[styles.city, styles.whiteText]}>
             {this.state.city}
           </Text>
@@ -102,8 +105,7 @@ class WeatherView extends Component {
       });
     })
     .catch(function (error) {
-      // console.error('An error occured');
-      console.error(error.message);
+      this.state.message = error.message;
     });
   }
 
@@ -157,7 +159,10 @@ const styles = StyleSheet.create({
   },
   forecast: {
     flex: 1,
-  }
+  },
+  message: {
+    fontSize: 30,
+  },
 });
 
 export default WeatherView;
