@@ -23,6 +23,7 @@ class WeatherView extends Component {
       city: '',
       temperature: '',
       icon: '',
+      forecasts: [],
       isLoading: false,
       message: ''
     };
@@ -53,10 +54,10 @@ class WeatherView extends Component {
             {this.state.temperature}
           </Text>
           <View style={styles.forecastContainer}>
-            <ForecastView style={styles.forecast}/>
-            <ForecastView style={styles.forecast}/>
-            <ForecastView style={styles.forecast}/>
-            <ForecastView style={styles.forecast}/>
+            <ForecastView style={styles.forecast} forecast={this.state.forecasts[0]}/>
+            <ForecastView style={styles.forecast} forecast={this.state.forecasts[1]}/>
+            <ForecastView style={styles.forecast} forecast={this.state.forecasts[2]}/>
+            <ForecastView style={styles.forecast} forecast={this.state.forecasts[3]}/>
           </View>
         </View>
       </Image>
@@ -77,13 +78,19 @@ class WeatherView extends Component {
       let weatherCondition = weatherList.weather[0].id;
       let iconString = weatherList.weather[0].icon;
 
+      let forecasts = [];
+      forecasts[0] = {time: '7:30', degrees: '30c', icon: weathericons('day-sunny')};
+      forecasts[1] = {time: '12:30', degrees: '30c', icon: weathericons('day-sunny')};
+      forecasts[2] = {time: '14:30', degrees: '30c', icon: weathericons('day-sunny')};
+      forecasts[3] = {time: '15:30', degrees: '30c', icon: weathericons('day-sunny')};
+
       this.setState({
         city: city,
         temperature: degrees,
         icon: weathericons('day-sunny'), // TODO: hardcoded here
-        isLoading: false
+        isLoading: false,
+        forecasts: forecasts,
       });
-
     })
     .catch(function (error) {
       console.error('An error occured');

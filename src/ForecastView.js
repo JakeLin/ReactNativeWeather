@@ -14,12 +14,14 @@ class ForecastView extends Component {
     return (
       <View style={styles.container}>
         <Text style={[styles.time, styles.whiteText]}>
-          12:30
+          {this.props.forecast? this.props.forecast.time: ''}
         </Text>
         <Text style={[styles.icon, styles.whiteText]}>
-          {Weathericons('day-sunny')}
+          {this.props.forecast? this.props.forecast.icon: ''}
         </Text>
-        <Text style={[styles.degrees, styles.whiteText]}>17°</Text>
+        <Text style={[styles.degrees, styles.whiteText]}>
+          {this.props.forecast? this.props.forecast.degrees: ''}
+        </Text>
       </View>
     );
   }
@@ -32,17 +34,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   whiteText: {
-    color: 'white'
+    color: 'white',
   },
   time: {
-    fontSize: 20
+    fontSize: 20,
   },
   icon: {
     fontFamily: 'Weather Icons',
-    fontSize: 40
+    fontSize: 40,
   },
   degrees: {
-    fontSize: 30
+    fontSize: 20,
   }
 });
 
