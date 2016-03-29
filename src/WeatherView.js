@@ -6,12 +6,15 @@ import React, {
   ActivityIndicatorIOS,
   Text,
   View,
-  Image
+  Image,
+  Dimensions,
 } from 'react-native';
 
 import weathericons from 'react-native-iconic-font/weathericons';
 
 import ForecastView from './ForecastView';
+
+const { width, height } = Dimensions.get('window');
 
 class WeatherView extends Component {
   constructor(props) {
@@ -124,7 +127,7 @@ const styles = StyleSheet.create({
     fontSize: 60,
   },
   forecastContainer: {
-    width: 320,
+    width: width,
     flexDirection: 'row',
     justifyContent: 'space-around',
   },
