@@ -17,9 +17,9 @@ class WeatherView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      city: 'Melbourne',
-      temperature: '27°',
-      icon: Weathericons('day-sunny'),
+      city: '',
+      temperature: '',
+      icon: '',
       isLoading: false,
       message: ''
     };
@@ -65,19 +65,32 @@ class WeatherView extends Component {
     let url = 'http://api.openweathermap.org/data/2.5/forecast?lat=-33.8634&lon=151.211&appid=fcc9c74f4b63e290811cb0d0d93d796f'
     fetch(url).then((response) => response.json())
               .then((json) => {
-      let weatherList = json.list[0]
-
-      // Store nextColor, since we'd like to start next time with it.
-      var current = this.state.nextColor;
+      let weatherList = json.list[0];
+      let tempDegrees = weatherList.main.temp;
+      let country = json.city.country;
+      let city = json.city.name;
+      let degrees = this.convertTemperature(country, tempDegrees);
+      let weatherCondition = weatherList.weather[0].id;
+      let iconString = weatherList.weather[0].icon;
 
       this.setState({
-        city: weatherList.name,
-        temperature: weatherList.main.temp,
-        icon: Weathericons('day-sunny'),
+        city: city,
+        temperature: degrees,
+        icon: Weathericons('day-sunny'), // TODO: hardcoded here
         isLoading: false
       });
 
     }, (err) => {console.log(err);});
+  }
+
+  convertTemperature(country, openWeatherMapDegrees) {
+    if (country === 'US') {
+      // Convert temperature to Fahrenheit if user is within the US
+      return Math.round(((openWeatherMapDegrees - 273.15) * 1.8) + 32) + '\u00B0 F'
+    } else {
+      // Otherwise, convert temperature to Celsius
+      return Math.round(openWeatherMapDegrees - 273.15) + '\u00B0 C'
+    }
   }
 }
 
