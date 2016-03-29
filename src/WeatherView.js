@@ -9,7 +9,7 @@ import React, {
   Image
 } from 'react-native';
 
-import Weathericons from 'react-native-iconic-font/weathericons';
+import weathericons from 'react-native-iconic-font/weathericons';
 
 import ForecastView from './ForecastView';
 
@@ -63,8 +63,9 @@ class WeatherView extends Component {
   queryOpenWeatherMap() {
     // TODO: temporarily used
     let url = 'http://api.openweathermap.org/data/2.5/forecast?lat=-33.8634&lon=151.211&appid=fcc9c74f4b63e290811cb0d0d93d796f'
-    fetch(url).then((response) => response.json())
-              .then((json) => {
+    fetch(url)
+    .then((response) => response.json())
+    .then((json) => {
       let weatherList = json.list[0];
       let tempDegrees = weatherList.main.temp;
       let country = json.city.country;
@@ -76,11 +77,15 @@ class WeatherView extends Component {
       this.setState({
         city: city,
         temperature: degrees,
-        icon: Weathericons('day-sunny'), // TODO: hardcoded here
+        icon: weathericons('day-sunny'), // TODO: hardcoded here
         isLoading: false
       });
 
-    }, (err) => {console.log(err);});
+    })
+    .catch(function (error) {
+      console.error('An error occured');
+      console.error(error.message);
+    });
   }
 
   convertTemperature(country, openWeatherMapDegrees) {
