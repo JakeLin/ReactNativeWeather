@@ -150,6 +150,7 @@ const styles = StyleSheet.create({
     fontSize: 60,
   },
   forecastContainer: {
+    paddingTop: 80,
     width: width,
     flexDirection: 'row',
     justifyContent: 'space-around',
