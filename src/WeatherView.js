@@ -3,6 +3,7 @@
 import React, {
   Component,
   StyleSheet,
+  ActivityIndicatorIOS,
   Text,
   View,
   Image
@@ -13,17 +14,39 @@ import Weathericons from 'react-native-iconic-font/weathericons';
 import ForecastView from './ForecastView';
 
 class WeatherView extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      city: 'Melbourne',
+      temperature: '27°',
+      icon: Weathericons('day-sunny'),
+      isLoading: false,
+      message: ''
+    };
+  }
+
   render() {
+
+
+    let spinner = this.state.isLoading ?
+      ( <ActivityIndicatorIOS
+          hidden='true'
+          size='large'/> ) :
+      ( <View/>);
+
     return (
       <Image style={styles.background} source={require('../img/background.png')}>
         <View style={styles.container}>
+          {spinner}
           <Text style={[styles.city, styles.whiteText]}>
-            Melbourne
+            {this.state.city}
           </Text>
           <Text style={[styles.icon, styles.whiteText]}>
-            {Weathericons('day-sunny')}
+            {this.state.icon}
           </Text>
-          <Text style={[styles.degrees, styles.whiteText]}>17°</Text>
+          <Text style={[styles.temperature, styles.whiteText]}>
+            {this.state.temperature}
+          </Text>
           <View style={styles.forecastContainer}>
             <ForecastView style={styles.forecast}/>
             <ForecastView style={styles.forecast}/>
@@ -57,11 +80,10 @@ const styles = StyleSheet.create({
     fontFamily: 'Weather Icons',
     fontSize: 100
   },
-  degrees: {
+  temperature: {
     fontSize: 60
   },
   forecastContainer: {
-    flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-around'
   },
@@ -70,4 +92,4 @@ const styles = StyleSheet.create({
   }
 });
 
-module.exports = WeatherView;
+export default WeatherView;
