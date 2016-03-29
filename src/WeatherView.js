@@ -10,8 +10,8 @@ import React, {
   Dimensions,
 } from 'react-native';
 
+import moment from 'moment';
 import weathericons from 'react-native-iconic-font/weathericons';
-
 import ForecastView from './ForecastView';
 
 const { width, height } = Dimensions.get('window');
@@ -66,7 +66,7 @@ class WeatherView extends Component {
 
   queryOpenWeatherMap() {
     // TODO: temporarily used
-    let url = 'http://api.openweathermap.org/data/2.5/forecast?lat=-33.8634&lon=151.211&appid=fcc9c74f4b63e290811cb0d0d93d796f'
+    const url = 'http://api.openweathermap.org/data/2.5/forecast?lat=-33.8634&lon=151.211&appid=fcc9c74f4b63e290811cb0d0d93d796f'
     fetch(url)
     .then((response) => response.json())
     .then((json) => {
@@ -79,10 +79,17 @@ class WeatherView extends Component {
       let iconString = weatherList.weather[0].icon;
 
       let forecasts = [];
-      forecasts[0] = {time: '7:30', degrees: '30c', icon: weathericons('day-sunny')};
-      forecasts[1] = {time: '12:30', degrees: '30c', icon: weathericons('day-sunny')};
-      forecasts[2] = {time: '14:30', degrees: '30c', icon: weathericons('day-sunny')};
-      forecasts[3] = {time: '15:30', degrees: '30c', icon: weathericons('day-sunny')};
+      // Get the first four forecasts
+      for (let i=0; i<4; ++i) {
+        let forecastList = json.list[i];
+
+        let forecast = {};
+        forecast.time = moment.unix(forecastList.dt).format('H:mm');
+        let forecastTempDegrees = forecastList.main.temp;
+        forecast.degrees = this.convertTemperature(country, forecastTempDegrees);
+        forecast.icon = weathericons('day-sunny'); // TODO: hardcoded here
+        forecasts[i] = forecast;
+      }
 
       this.setState({
         city: city,
@@ -93,7 +100,7 @@ class WeatherView extends Component {
       });
     })
     .catch(function (error) {
-      console.error('An error occured');
+      // console.error('An error occured');
       console.error(error.message);
     });
   }
