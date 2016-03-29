@@ -87,14 +87,16 @@ class WeatherView extends Component {
         forecast.time = moment.unix(forecastList.dt).format('H:mm');
         let forecastTempDegrees = forecastList.main.temp;
         forecast.degrees = this.convertTemperature(country, forecastTempDegrees);
-        forecast.icon = weathericons('day-sunny'); // TODO: hardcoded here
+        let forecastCondition = forecastList.weather[0].id;
+        let forecastIconString = forecastList.weather[0].icon;
+        forecast.icon = this.weatherIcon(forecastCondition, forecastIconString);
         forecasts[i] = forecast;
       }
 
       this.setState({
         city: city,
         temperature: degrees,
-        icon: weathericons('day-sunny'), // TODO: hardcoded here
+        icon: this.weatherIcon(weatherCondition, iconString),
         isLoading: false,
         forecasts: forecasts,
       });
@@ -108,11 +110,18 @@ class WeatherView extends Component {
   convertTemperature(country, openWeatherMapDegrees) {
     if (country === 'US') {
       // Convert temperature to Fahrenheit if user is within the US
-      return Math.round(((openWeatherMapDegrees - 273.15) * 1.8) + 32) + '\u00B0 F'
+      return Math.round(((openWeatherMapDegrees - 273.15) * 1.8) + 32) + '\u00B0 F';
     } else {
       // Otherwise, convert temperature to Celsius
-      return Math.round(openWeatherMapDegrees - 273.15) + '\u00B0 C'
+      return Math.round(openWeatherMapDegrees - 273.15) + '\u00B0 C';
     }
+  }
+
+  weatherIcon(condition, iconString) {
+    if (iconString.includes('n')) {
+      return weathericons('owm-night-' + condition);
+    }
+    return weathericons('owm-day-' + condition);
   }
 }
 
