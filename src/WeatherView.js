@@ -105,7 +105,9 @@ class WeatherView extends Component {
       });
     })
     .catch(function (error) {
-      this.state.message = error.message;
+      this.setState({
+        message: error.message,
+      });
     });
   }
 
