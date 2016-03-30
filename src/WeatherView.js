@@ -92,7 +92,7 @@ class WeatherView extends Component {
 
     const url = 'http://api.openweathermap.org/data/2.5/forecast?' + queryString;
     console.log(url);
-    let that = this;
+
     fetch(url)
     .then(response => response.json())
     .then(json => {
@@ -127,8 +127,8 @@ class WeatherView extends Component {
         forecasts: forecasts,
       });
     })
-    .catch(function (error) {
-      that.setState({
+    .catch(error => {
+      this.setState({
         message: error.message,
       });
     });
