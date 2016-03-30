@@ -30,7 +30,7 @@ class WeatherView extends Component {
   }
 
   componentDidMount() {
-    this.queryOpenWeatherMap();
+    this.startLocationSearch();
   }
 
   render() {
@@ -40,7 +40,7 @@ class WeatherView extends Component {
           size='large'/> ) :
       ( <View/> );
     let messageView = this.state.message ?
-      ( <View style={[styles.whiteText, styles.message]}>this.state.message</View> ) :
+      ( <Text style={[styles.whiteText, styles.message]}>{this.state.message}</Text> ) :
       ( <View/> );
     return (
       <Image style={styles.backgroundImage} source={require('../img/background.png')}>
@@ -67,12 +67,35 @@ class WeatherView extends Component {
     );
   }
 
-  queryOpenWeatherMap() {
+  startLocationSearch() {
+    navigator.geolocation.getCurrentPosition(
+      location => {
+        this.queryOpenWeatherMap(location);
+      },
+      error => {
+        this.setState({
+          message: error.message
+        });
+      });
+  }
+
+  queryOpenWeatherMap(location) {
     // TODO: temporarily used
-    const url = 'http://api.openweathermap.org/data/2.5/forecast?lat=-33.8634&lon=151.211&appid=fcc9c74f4b63e290811cb0d0d93d796f'
+    const data = {
+      lat: location.coords.latitude,
+      lon: location.coords.longitude,
+      appid: 'fcc9c74f4b63e290811cb0d0d93d796f',
+    };
+    let queryString = Object.keys(data)
+        .map(key => key + '=' + encodeURIComponent(data[key]))
+        .join('&');
+
+    const url = 'http://api.openweathermap.org/data/2.5/forecast?' + queryString;
+    console.log(url);
+    let that = this;
     fetch(url)
-    .then((response) => response.json())
-    .then((json) => {
+    .then(response => response.json())
+    .then(json => {
       let weatherList = json.list[0];
       let tempDegrees = weatherList.main.temp;
       let country = json.city.country;
@@ -105,7 +128,7 @@ class WeatherView extends Component {
       });
     })
     .catch(function (error) {
-      this.setState({
+      that.setState({
         message: error.message,
       });
     });
@@ -163,7 +186,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   message: {
-    fontSize: 30,
+    fontSize: 15,
   },
 });
 
