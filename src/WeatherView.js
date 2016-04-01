@@ -6,15 +6,14 @@ import React, {
   ActivityIndicatorIOS,
   Text,
   View,
-  Image,
-  Dimensions,
+  Image
 } from 'react-native';
 
 import moment from 'moment';
 import weathericons from 'react-native-iconic-font/weathericons';
 import ForecastView from './ForecastView';
 
-const { width, height } = Dimensions.get('window');
+import styles from './WeatherView-styles';
 
 class WeatherView extends Component {
   constructor(props) {
@@ -24,7 +23,7 @@ class WeatherView extends Component {
       temperature: '',
       icon: '',
       forecasts: [],
-      isLoading: false,
+      isLoading: true,
       message: ''
     };
   }
@@ -157,43 +156,5 @@ class WeatherView extends Component {
     return weathericons('owm-day-' + condition);
   }
 }
-
-const styles = StyleSheet.create({
-  backgroundImage: {
-    alignSelf: 'center',
-  },
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#000000',
-    opacity: 0.8,
-  },
-  whiteText: {
-    color: 'white',
-  },
-  city: {
-    fontSize: 40,
-  },
-  icon: {
-    fontFamily: 'Weather Icons',
-    fontSize: 100,
-  },
-  temperature: {
-    fontSize: 60,
-  },
-  forecastContainer: {
-    paddingTop: 80,
-    width: width,
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-  },
-  forecast: {
-    flex: 1,
-  },
-  message: {
-    fontSize: 15,
-  },
-});
 
 export default WeatherView;
