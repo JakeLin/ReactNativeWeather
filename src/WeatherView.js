@@ -34,19 +34,11 @@ class WeatherView extends Component {
   }
 
   render() {
-    let spinner = this.state.isLoading ?
-      ( <ActivityIndicatorIOS
-          hidden='true'
-          size='large'/> ) :
-      ( <View/> );
-    let messageView = this.state.message ?
-      ( <Text style={[styles.whiteText, styles.message]}>{this.state.message}</Text> ) :
-      ( <View/> );
     return (
       <Image style={styles.backgroundImage} source={require('../img/background.png')}>
         <View style={styles.container}>
-          {spinner}
-          {messageView}
+          {this.getSpinner()}
+          {this.getMessageView()}
           <Text style={[styles.city, styles.whiteText]}>
             {this.state.city}
           </Text>
@@ -65,6 +57,20 @@ class WeatherView extends Component {
         </View>
       </Image>
     );
+  }
+
+  getSpinner() {
+    return this.state.isLoading ?
+      ( <ActivityIndicatorIOS
+          hidden='false'
+          size='large'/> ) :
+      ( <View/> );
+  }
+
+  getMessageView() {
+    return this.state.message ?
+      ( <Text style={[styles.whiteText, styles.message]}>{this.state.message}</Text> ) :
+      ( <View/> );
   }
 
   startLocationSearch() {
