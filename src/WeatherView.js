@@ -79,7 +79,7 @@ class WeatherView extends Component {
       },
       error => {
         this.setState({
-          message: error
+          message: error.message || error
         });
       },
       {enableHighAccuracy: false, timeout: 20000, maximumAge: 1000}
