@@ -82,7 +82,7 @@ class WeatherView extends Component {
           message: error.message || error
         });
       },
-      {enableHighAccuracy: false, timeout: 20000, maximumAge: 1000}
+      {enableHighAccuracy: true, timeout: 2000, maximumAge: 1000}
     );
   }
 
