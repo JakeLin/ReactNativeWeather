@@ -79,9 +79,11 @@ class WeatherView extends Component {
       },
       error => {
         this.setState({
-          message: error.message
+          message: error
         });
-      });
+      },
+      {enableHighAccuracy: false, timeout: 20000, maximumAge: 1000}
+    );
   }
 
   queryOpenWeatherMap(location) {
@@ -96,7 +98,6 @@ class WeatherView extends Component {
         .join('&');
 
     const url = 'http://api.openweathermap.org/data/2.5/forecast?' + queryString;
-    console.log(url);
 
     fetch(url)
     .then(response => response.json())
