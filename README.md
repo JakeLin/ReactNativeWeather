@@ -9,6 +9,9 @@ It is the React Native version of [SwiftWeather](https://github.com/JakeLin/Swif
 
 If you don't have `react-native-cli` installed, please get it installed by following the instructions in [Get started with react-native](https://facebook.github.io/react-native/docs/getting-started.html#requirements)
 
+### Screenshots
+![iOS screenshot](https://raw.githubusercontent.com/JakeLin/ReactNativeWeather/master/screenshots/screenshot-iOS.png)
+
 ### Clone this repo and install its dependencies
 
 ```bash
