@@ -5,6 +5,7 @@ import React, {
   Dimensions
 } from 'react-native';
 
+const { Platform } = React;
 const { width, height } = Dimensions.get('window');
 
 export default StyleSheet.create({
@@ -25,7 +26,7 @@ export default StyleSheet.create({
     fontSize: 40,
   },
   icon: {
-    fontFamily: 'Weather Icons',
+    fontFamily: (Platform.OS === 'ios') ? 'Weather Icons' : 'weathericons',
     fontSize: 100,
   },
   temperature: {

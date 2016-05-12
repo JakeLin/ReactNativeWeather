@@ -4,6 +4,8 @@ import React, {
   StyleSheet
 } from 'react-native';
 
+const { Platform } = React;
+
 export default StyleSheet.create({
   container: {
     flex: 1,
@@ -17,7 +19,7 @@ export default StyleSheet.create({
     fontSize: 20,
   },
   icon: {
-    fontFamily: 'Weather Icons',
+    fontFamily: (Platform.OS === 'ios') ? 'Weather Icons' : 'weathericons',
     fontSize: 40,
   },
   degrees: {
