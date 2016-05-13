@@ -6,6 +6,7 @@ import React, {
   StyleSheet,
 } from 'react-native';
 
+import weathericons from 'react-native-iconic-font/weathericons';
 import WeatherView from './WeatherView';
 
 class ReactNativeWeather extends Component {
