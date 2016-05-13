@@ -1,6 +1,6 @@
 # ReactNativeWeather
 
-An weather map app developed in React Native.
+A weather app developed in React Native.
 It is the React Native version of [SwiftWeather](https://github.com/JakeLin/SwiftWeather)
 
 [![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=56fbb7b13392d60100224954&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/56fbb7b13392d60100224954/build/latest)
@@ -26,16 +26,13 @@ npm install
 ```
 
 ### Start the app
-```bash
-npm start
-```
 
-For IOS, run
+#### For iOS, run
 ```bash
 react-native run-ios
 ```
 
-For android, run
+### For Android, run
 ```bash
 react-native run-android
 ```
