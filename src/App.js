@@ -1,13 +1,7 @@
 'use strict';
 
-import React, {
-  AppRegistry,
-  Component,
-  StyleSheet,
-} from 'react-native';
-
-import weathericons from 'react-native-iconic-font/weathericons';
-import WeatherView from './WeatherView';
+import React, { Component } from 'react-native';
+import WeatherView from './components/WeatherView';
 
 class ReactNativeWeather extends Component {
   render() {

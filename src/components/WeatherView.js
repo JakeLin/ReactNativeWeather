@@ -9,8 +9,8 @@ import React, {
   Image
 } from 'react-native';
 
-import moment from 'moment';
 import weathericons from 'react-native-iconic-font/weathericons';
+import moment from 'moment';
 import ForecastView from './ForecastView';
 
 import styles from './WeatherView-styles';
@@ -34,7 +34,7 @@ class WeatherView extends Component {
 
   render() {
     return (
-      <Image style={styles.backgroundImage} source={require('../img/background.png')}>
+      <Image style={styles.backgroundImage} source={require('../../img/background.png')}>
         <View style={styles.container}>
           {this.getSpinner()}
           {this.getMessageView()}
