@@ -1,12 +1,7 @@
 'use strict';
 
-import React, {
-  AppRegistry,
-  Component,
-  StyleSheet,
-} from 'react-native';
-
-import WeatherView from './WeatherView';
+import React, { Component } from 'react-native';
+import WeatherView from './components/WeatherView';
 
 class ReactNativeWeather extends Component {
   render() {
@@ -14,12 +9,6 @@ class ReactNativeWeather extends Component {
       <WeatherView />
     );
   }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
+};
 
 export default ReactNativeWeather;

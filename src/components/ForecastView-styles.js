@@ -1,10 +1,7 @@
 'use strict'
 
-import React, {
-  StyleSheet
-} from 'react-native';
-
-const { Platform } = React;
+import { StyleSheet } from 'react-native';
+import { weatherIconsFontFamily } from '../styles/Icons';
 
 export default StyleSheet.create({
   container: {
@@ -19,7 +16,7 @@ export default StyleSheet.create({
     fontSize: 20,
   },
   icon: {
-    fontFamily: (Platform.OS === 'ios') ? 'Weather Icons' : 'weathericons',
+    fontFamily: weatherIconsFontFamily,
     fontSize: 40,
   },
   degrees: {
