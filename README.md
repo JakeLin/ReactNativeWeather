@@ -32,7 +32,7 @@ npm install
 react-native run-ios
 ```
 
-### For Android, run
+#### For Android, run
 ```bash
 react-native run-android
 ```
