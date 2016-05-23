@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 import { StyleSheet } from 'react-native';
 import { weatherIconsFontFamily } from '../styles/Icons';

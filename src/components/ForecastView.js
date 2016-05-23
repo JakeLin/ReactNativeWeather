@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 import React, { Component } from 'react';
 import {
@@ -6,7 +6,7 @@ import {
   View
 } from 'react-native';
 
-import styles from './ForecastView-styles'
+import styles from './ForecastView-styles';
 
 class ForecastView extends Component {
   render() {

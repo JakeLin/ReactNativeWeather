@@ -36,3 +36,16 @@ react-native run-ios
 ```bash
 react-native run-android
 ```
+
+### Development
+
+#### Lint the code
+
+```bash
+npm run lint
+```
+
+You can also install the following plugins in your editor/IDE:
+
+ - [Eslint plugins](https://github.com/viruschidai/learn-react-ecosystem/blob/master/docs/ESLINT.md)
+ - [EditorConfig plugin](https://github.com/viruschidai/learn-react-ecosystem/blob/master/docs/EDITORCONFIG.md)
