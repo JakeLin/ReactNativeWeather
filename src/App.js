@@ -9,6 +9,6 @@ class ReactNativeWeather extends Component {
       <WeatherView />
     );
   }
-};
+}
 
 export default ReactNativeWeather;

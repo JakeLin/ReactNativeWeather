@@ -1,8 +1,9 @@
-'use strict'
+'use strict';
 
 import { StyleSheet, Dimensions } from 'react-native';
-const { width, height } = Dimensions.get('window');
 import { weatherIconsFontFamily } from '../styles/Icons';
+
+const { width } = Dimensions.get('window');
 
 export default StyleSheet.create({
   backgroundImage: {
