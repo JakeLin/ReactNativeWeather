@@ -6,7 +6,7 @@ It is the React Native version of [SwiftWeather](https://github.com/JakeLin/Swif
 [![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=56fbb7b13392d60100224954&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/56fbb7b13392d60100224954/build/latest)
 [![Language](https://img.shields.io/badge/language-ES%206-orange.svg)](https://github.com/lukehoban/es6features#readme)
 [![Platforms](https://img.shields.io/badge/platform-iOS%20%7C%20Android-lightgrey.svg)](http://facebook.github.io/react-native/docs/getting-started.html)
-[![License](https://img.shields.io/github/license/JakeLin/IBAnimatable.svg?style=flat)](https://github.com/JakeLin/ReactNativeWeather/blob/master/LICENSE)
+[![License](https://img.shields.io/github/license/JakeLin/ReactNativeWeather.svg?style=flat)](https://github.com/JakeLin/ReactNativeWeather/blob/master/LICENSE)
 
 ## How to run the app
 
